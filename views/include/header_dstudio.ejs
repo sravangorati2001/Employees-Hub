@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DStudio</title>
+        <link rel="icon" href="/images/dbox.png" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>  
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"> 
+        
+        <script>tinymce.init({selector:'textarea'});</script>
+         <style>
+           .badge {
+            position: relative;
+            top: -16px;
+            left: -20px;
+            border: 1px solid black;
+            border-radius: 30%;
+        }
+         </style>
+         <script>
+           window.onload=(event)=>{
+          var req=localStorage.getItem('req')
+          var noti=localStorage.getItem('noti')
+          var reqEle=document.getElementById('requestsCount');
+          var notiEle= document.getElementById('notificationsCount');
+          
+          if(req=='0')
+         reqEle.style.visibility='hidden'
+         else 
+         reqEle.innerText=req;
+          
+          if(noti=='0')
+          notiEle.style.visibility='hidden'
+          else
+          notiEle.innerText=noti;
+           
+           }
+        </script>
+    </head>
+    <body  style="position: relative; background-color: darkslategrey;" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary sticky-top" >
+        <a class="navbar-brand" href="http://localhost:3000/home">
+        <img src="/images/dbox.png" width="30" height="30" class="d-inline-block align-top" alt="">
+
+          DStudio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="http://localhost:3000/users">Users</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Post
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="http://localhost:3000/post/create">Create post</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="http://localhost:3000/posts">View posts</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Question
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="http://localhost:3000/home">Ask Question</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="http://localhost:3000/questions">View questions</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="http://localhost:3000/aboutus">About Us <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <div class="mr-3 mt-2">
+           
+          <img src="/images/add-friend.png" width="30" height="30" class="d-inline-block align-top" alt="" style="cursor: pointer;" id="requests" onclick="location.href='http://localhost:3000/user/friendRequests'" title="Requests">
+          
+          <span class="badge badge-danger" id="requestsCount"  style=" position: relative; top: -16px; left: -20px; border: 1px solid black; border-radius: 30%;" ></span>
+          
+        
+        </div>
+        <div class="mr-4 mt-2">
+            <img src="/images/notification.png" width="30" height="30" class="d-inline-block align-top" alt="" style="cursor: pointer;" id="notifications" onclick="location.href='http://localhost:3000/user/notifications'" title="Notifications">
+            
+              <span class="badge badge-danger" id="notificationsCount" style="position: relative; top: -16px; left: -20px; border: 1px solid black; border-radius: 30%;"></span>
+             
+            
+        </div>
+          <ul class="navbar-nav mr-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="currentUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="<%= url %>" width="35" height="33" class="d-inline-block align-top" alt="" style="border-radius: 7px;">
+                <strong class="mt-2"><%= name %></strong>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="http://localhost:3000/profile">Profile</a>
+                <a class="dropdown-item" href="http://localhost:3000/post/create">Create post</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="http://localhost:3000/user/posts/my">My posts</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="/logout" method="GET" onsubmit="clearLocalStorage()">
+            <button class="btn btn-danger my-2 my-sm-0" type="submit" id="logout" >Logout</button>
+          </form>
+        </div>
+      </nav>
+     

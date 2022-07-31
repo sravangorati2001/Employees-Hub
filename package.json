@@ -1,0 +1,39 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.58.0",
+    "@aws-sdk/s3-request-presigner": "^3.58.0",
+    "alert": "^5.0.10",
+    "aws-sdk": "^2.1107.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "config": "^3.3.7",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "~4.16.1",
+    "express-session": "^1.17.2",
+    "fs": "^0.0.1-security",
+    "http-errors": "~1.6.3",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.9",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.4",
+    "querystring": "^0.2.1",
+    "socket.io": "^4.4.1",
+    "tinymce": "^6.0.1",
+    "toastify-js": "^1.11.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

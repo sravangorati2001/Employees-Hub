@@ -1,0 +1,33 @@
+<%- include('include/header_dstudio') %>  
+      <br><br>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <span class="anchor" id="formLogin"></span> 
+                      
+          <div class="card card-outline-secondary border-dark">
+            <div class="card-header bg-dark text-success">
+              <h3 class="mb-0">Edit Post - <%= data._id %></h3>
+            </div>
+            <div class="card-body">
+                <form autocomplete="off" class="form" id="formLogin" name="formLogin" role="form" form action="/submit_edit/<%= data._id %>" method="POST" >
+                <div class="form-group">
+                  <label for="uname1">Title</label> 
+                      <input class="form-control" id="uname1" name="title" required="" type="text" value="<%= data.title %>">
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Enter your Text</label>
+                    <textarea class="form-control" id="my-expressjs-tinymce-app" name="text" value=""><%- data.text %></textarea>
+                  </div>
+                
+                  <button class="btn btn-success btn-lg float-right" type="submit" >Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <script type="application/javascript" src= "/tinymce/tinymce.min.js"></script>
+   <!-- Script element sourcing the TinyMCE configuration -->
+   <script type="application/javascript" src= "/javascripts/my-tinymce-config.js"></script>
+<%- include('include/footer') %>      

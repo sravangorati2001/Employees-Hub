@@ -1,0 +1,81 @@
+<%- include('include/header_dstudio') %>
+<br>
+<!-- Example single danger button -->
+
+  
+    <br>
+   
+    <div class="d-flex justify-content-center">
+    <div class="container ">
+      <div class="row">
+        <div class="col">
+          <div class="card card-outline-secondary border-warning  mx-auto"  style="width: 90%;" id='1'>
+            <div class="card-header bg-dark text-success">
+              <label class="mb-0 text-success"><h3><span style="cursor: pointer;" onclick="location.href='http://localhost:3000/post/<%=data._id %>';"><%=data.title %> </span>- <a href="http://localhost:3000//user/posts/<%=data.userId %>"><%=data.name %></a></h3></label>
+              <div class="float-right">
+                <button class="btn btn-warning mx-3" onclick="location.href='http://localhost:3000/post/edit/<%=data._id %>';">
+                  <i class="fa fa-pencil" style="font-size:20px; color: black;"></i>
+                  </button>
+                  <button class="btn btn-danger"  onclick="deletePost('<%=data._id %>','1')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+                </button>
+              
+            </div>
+            </div>
+            <div class="card-body">
+              <%-data.text %> 
+            
+            </div>
+            <div class="card-footer bg-secondary text-light border-success">
+              <div class="row ">
+                <div class="col-sm-4 d-flex justify-content-center" >
+               
+                <% if(Like) {%>
+                 
+                <div id="result+1" data-id="<%=data.likes.length %>" class="mt-2 mr-1 font-weight-bold"><%= data.likes.length%></div>
+                <div class="like-unlike">
+                  <img id="like-unlike-img+1" data-id="<%=data._id %>"  onclick="likeUnlike(1,'<%=data._id %>','<%=data.name %>')"  src="/images/like1.png" width="35" height="35" class="unlike" alt="" style="cursor: pointer; display: inline;" >
+                <div  style="cursor: pointer; display: none; margin-top: 5px;" class="text" id="text+1">Unlike</div></div>
+              
+                 <% } %>
+
+                 <% if(!Like) {%>
+                 
+                  <div id="result+1" data-id="<%=data.likes.length %>" class="mt-2 mr-1 font-weight-bold"><%= data.likes.length%></div>
+                 <div class="like-unlike">
+                  <img data-id="<%=data._id %>" id="like-unlike-img+1" onclick="likeUnlike(1,'<%=data._id %>','<%=data.name %>')"  src="/images/like(1).png" width="35" height="35" class="like" alt="" style="cursor: pointer; display: inline;" >
+                  <div  style="cursor: pointer; display: none; margin-top: 5px;" class="text" id="text+1">Like</div></div>
+               
+                 <% } %>
+               
+              </div>
+                 <div class="col-sm-4 d-flex justify-content-center" >
+                  <img src="/images/comment2.png" width="30" height="30" class="mr-2 mb-0" alt="" style="cursor: pointer;">
+                 <div> comment </div>
+                </div>
+                 <div class="col-sm-4 d-flex justify-content-center" >
+                  <img src="/images/share.png" width="30" height="30" class="mr-2 mb-0" alt="" style="cursor: pointer;">
+                 <div> share </div></div>
+              </div> 
+            </div>
+          </div>
+        </div>
+     
+    <div class="card card-outline-secondary border-danger w-25 h-50 mr-3 mt-3">
+        <div class="card-header bg-primary">Tags</div>
+        <div class="card-body">
+            <% for(var i = 0; i < data.tags.length; i++) { %>
+                <span class="border border-dark p-1 " style="cursor: pointer; margin-top: 8px; " onclick="location.href='http://localhost:3000/posts/searchTag/<%= data.tags[i].substring(1) %>';"><%=  data.tags[i] %></span>
+                <% } %>
+        </div>
+       </div>
+      </div> 
+    </div>
+  </div> 
+  
+    
+      
+  <%- include('include/footer') %>
