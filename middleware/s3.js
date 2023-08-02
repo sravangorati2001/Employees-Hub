@@ -47,7 +47,7 @@ function getUrl(key){
     Key: key,
     Expires:30*60
   })
-  return url;
+  return '';
 }
 exports.getUrl=getUrl;
 // downloads a file from s3

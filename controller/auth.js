@@ -68,7 +68,7 @@ exports.signin = async (req, res,next) => {
         httpOnly:true
       })
    
-      var url =await s3Func.getUrl(result.key);
+      var url ='';
      req.session.url=url;
      req.session.requestCount=result.requests.length;
      req.session.notificationCount=result.notifications.length;

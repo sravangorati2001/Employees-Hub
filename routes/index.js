@@ -66,7 +66,7 @@ router.post("/register",upload,signup,async (req,res)=>{
  
  const file = req.file
 //console.log(file)
-const result = await handler.uploadFile(file)
+
 res.render('signin');
 });
 

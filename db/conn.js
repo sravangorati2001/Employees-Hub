@@ -2,7 +2,7 @@
 
 const { MongoClient } = require('mongodb');
 require('dotenv').config()
-const connectionString = 'mongodb://localhost:27017'
+const connectionString = 'mongodb+srv://sravangorati2001:sravangorati2001@employeeshub.v2cwab6.mongodb.net/?retryWrites=true&w=majority'
 const client = new MongoClient(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -17,7 +17,7 @@ module.exports = {
         return callback(err);
       }
 
-      dbConnection = db.db('sample_airbnb');
+      dbConnection = db.db('employeeshub');
       console.log('Successfully connected to MongoDB.');
 
       return callback();
